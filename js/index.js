@@ -40,10 +40,20 @@ window.addEventListener('DOMContentLoaded', () => {
       a: 3,
     },
     {
-      q: 'What is the capital of Australia',
+      q: 'What is the capital of Australia?',
       o: ['Sydney', 'Canberra', 'Melbourne', 'Perth'],
       a: 1,
     },
+    {
+      q: 'What is the largest city of Australia?',
+      o: ['Sydney', 'Canberra', 'Melbourne', 'Brisbane'],
+      a: 3,
+    },
+    {
+      q: 'What is the longest river of Australia?',
+      o: ['Murrambadgee', 'Murray', 'Lanchlan', 'Barwon'],
+      a: 1,
+    }
   ];
 
   // function to Display the quiz questions and answers from the object
@@ -64,27 +74,49 @@ window.addEventListener('DOMContentLoaded', () => {
   };
 
   // Calculate the score
+
   const calculateScore = () => {
     let score = 0;
+
+    // console.log('1 array length',quizArray.length)
     quizArray.map((quizItem, index) => {
       for (let i = 0; i < 4; i++) {
+        
         //highlight the li if it is the correct answer
         let li = `li_${index}_${i}`;
         let r = `radio_${index}_${i}`;
         liElement = document.querySelector('#' + li);
         radioElement = document.querySelector('#' + r);
-
-        if (quizItem.a == i) {
-          //change background color of li element here
-        }
-
-        if (radioElement.checked) {
-          // code for task 1 goes here
+        if (radioElement.checked == true) {
+          if (quizItem.a == i) {
+            //change background color of li element here
+            document.querySelector('#' + li).style.background = "green";
+            // code for task 1 goes here
+            score++;
+          } else {
+            document.querySelector('#' + li).style.background = "red";
+          }
         }
       }
     });
+    console.log('Final score:', score);
+    // To display score
+    //const quizBlock = document.getElementById('quizBlock');
+    const scoreDiv = document.createElement("div");
+    document.getElementById("quizBlock").appendChild(scoreDiv);
+
+    scoreDiv.innerHTML = `<br><div class="container" id="quizBlock" style="display:grid">
+                    <div class="card-body mb-2" style="background-color:white">
+                    <p>The final score is ${score}</p>
+                    </div>
+                  </div>`
   };
 
   // call the displayQuiz function
+  const btnSubmit = document.getElementById('btnSubmit')
   displayQuiz();
+  btnSubmit.addEventListener('click', calculateScore);
 });
+const btnReset = document.querySelector('#btnReset')
+btnReset.onclick = () => { window.location.reload(); }
+
