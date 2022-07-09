@@ -51,7 +51,7 @@ window.addEventListener('DOMContentLoaded', () => {
     },
     {
       q: 'What is the longest river of Australia?',
-      o: ['Murrambadgee', 'Murray', 'Lanchlan', 'Barwon'],
+      o: ['Murrumbidgee', 'Murray', 'Lachlan', 'Barwon'],
       a: 1,
     }
   ];
@@ -112,23 +112,28 @@ window.addEventListener('DOMContentLoaded', () => {
                   </div>`
   };
 
-  // call the displayQuiz function
-  const btnSubmit = document.getElementById('btnSubmit')
-  displayQuiz();
-  btnSubmit.addEventListener('click', calculateScore);
-});
-const btnReset = document.querySelector('#btnReset')
-btnReset.onclick = () => { window.location.reload(); }
-
-// Time counter
+  // Time counter
 var count = 25;
 var interval = setInterval(function(){
   document.getElementById('time').innerHTML=count;
   count--;
   if (count === 0){
     clearInterval(interval);
-    document.getElementById('time').innerHTML='Done';
-    // or...
-    alert("You're out of time!");
+    document.getElementById('time').innerHTML='Time Up';
+
+   // alert("You're out of time!");
   }
 }, 1000);
+
+  // call the displayQuiz function
+  const btnSubmit = document.getElementById('btnSubmit')
+  displayQuiz();
+  btnSubmit.addEventListener('click', calculateScore);
+});
+
+  // Reset to start Quiz Again
+const btnReset = document.querySelector('#btnReset')
+btnReset.onclick = () => { 
+  window.location.reload();
+ }
+
