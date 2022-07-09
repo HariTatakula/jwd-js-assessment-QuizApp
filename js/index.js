@@ -91,11 +91,11 @@ window.addEventListener('DOMContentLoaded', () => {
         if (radioElement.checked == true) {
           if (quizItem.a == i) {
             //change background color of li element here
-            document.querySelector('#' + li).style.background = "green";
+            document.querySelector('#' + li).style.background = "hsla(120,100%,50%,0.3)";
             // code for task 1 goes here
             score++;
           } else {
-            document.querySelector('#' + li).style.background = "red";
+            document.querySelector('#' + li).style.background = "rgba(255, 0, 0, 0.6)";
           }
         }
       }
@@ -114,6 +114,7 @@ window.addEventListener('DOMContentLoaded', () => {
   };
 
   // Time counter
+start.onclick = () =>{
 var count = 20;
 var interval = setInterval(function(){
   document.getElementById('time').innerHTML=count;
@@ -129,7 +130,9 @@ var interval = setInterval(function(){
    // alert("You're out of time!");
   }
     
-}, 1000);
+  }, 1000);
+
+}
 
   // call the displayQuiz function
   const btnSubmit = document.getElementById('btnSubmit')
@@ -138,7 +141,7 @@ var interval = setInterval(function(){
   btnSubmit.onclick =()=> {
     calculateScore();
     
-    }
+  }
 });
 
   // Reset to start Quiz Again
