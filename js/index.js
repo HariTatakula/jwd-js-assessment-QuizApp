@@ -101,7 +101,7 @@ window.addEventListener('DOMContentLoaded', () => {
     });
     console.log('Final score:', score);
     // To display score
-    //const quizBlock = document.getElementById('quizBlock');
+    
     const scoreDiv = document.createElement("div");
     document.getElementById("quizBlock").appendChild(scoreDiv);
 
@@ -113,13 +113,16 @@ window.addEventListener('DOMContentLoaded', () => {
   };
 
   // Time counter
-var count = 25;
+var count = 20;
 var interval = setInterval(function(){
   document.getElementById('time').innerHTML=count;
   count--;
   if (count === 0){
     clearInterval(interval);
     document.getElementById('time').innerHTML='Time Up';
+    const quizWrap = document.querySelector('#quizWrap');
+    let quizDisplay = '';
+    quizWrap.innerHTML = quizDisplay;
 
    // alert("You're out of time!");
   }
