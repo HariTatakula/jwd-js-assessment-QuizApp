@@ -28,6 +28,7 @@ window.addEventListener('DOMContentLoaded', () => {
   // quizArray QUESTIONS & ANSWERS
   // q = QUESTION, o = OPTIONS, a = CORRECT ANSWER
   // Basic ideas from https://code-boxx.com/simple-javascript-quiz/
+
   const quizArray = [
     {
       q: 'Which is the third planet from the sun?',
@@ -107,7 +108,7 @@ window.addEventListener('DOMContentLoaded', () => {
 
     scoreDiv.innerHTML = `<br><div class="container" id="quizBlock" style="display:grid">
                     <div class="card-body mb-2" style="background-color:white">
-                    <p>The final score is ${score}</p>
+                    <p>You Scored <span style="color:red">${score}</span> out of 5 ! <br> Do You want to try Again? </p>
                     </div>
                   </div>`
   };
@@ -120,18 +121,24 @@ var interval = setInterval(function(){
   if (count === 0){
     clearInterval(interval);
     document.getElementById('time').innerHTML='Time Up';
+
     const quizWrap = document.querySelector('#quizWrap');
     let quizDisplay = '';
     quizWrap.innerHTML = quizDisplay;
 
    // alert("You're out of time!");
   }
+    
 }, 1000);
 
   // call the displayQuiz function
   const btnSubmit = document.getElementById('btnSubmit')
   displayQuiz();
-  btnSubmit.addEventListener('click', calculateScore);
+  
+  btnSubmit.onclick =()=> {
+    calculateScore();
+    
+    }
 });
 
   // Reset to start Quiz Again
