@@ -81,7 +81,7 @@ window.addEventListener('DOMContentLoaded', () => {
     // console.log('1 array length',quizArray.length)
     quizArray.map((quizItem, index) => {
       for (let i = 0; i < 4; i++) {
-        
+
         //highlight the li if it is the correct answer
         let li = `li_${index}_${i}`;
         let r = `radio_${index}_${i}`;
@@ -120,3 +120,15 @@ window.addEventListener('DOMContentLoaded', () => {
 const btnReset = document.querySelector('#btnReset')
 btnReset.onclick = () => { window.location.reload(); }
 
+// Time counter
+var count = 25;
+var interval = setInterval(function(){
+  document.getElementById('time').innerHTML=count;
+  count--;
+  if (count === 0){
+    clearInterval(interval);
+    document.getElementById('time').innerHTML='Done';
+    // or...
+    alert("You're out of time!");
+  }
+}, 1000);
