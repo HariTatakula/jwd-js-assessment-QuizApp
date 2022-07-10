@@ -114,8 +114,9 @@ window.addEventListener('DOMContentLoaded', () => {
   };
 
   // Time counter
+  var count = 20;
 start.onclick = () =>{
-var count = 20;
+
 var interval = setInterval(function(){
   document.getElementById('time').innerHTML=count;
   count--;
@@ -140,9 +141,19 @@ var interval = setInterval(function(){
   
   btnSubmit.onclick =()=> {
     calculateScore();
+    quizArray.map((quizItem, index) => {
+      const scoreDiv = document.createElement("div");
+      let i= quizItem.a;
+      document.getElementById("quizBlock").appendChild(scoreDiv);
+      scoreDiv.innerHTML= `<br><div class="container" id="quizBlock" style="display:grid">
+                            <div class="card-body mb-2" style="background-color:white">
+                            <h5>${quizItem.q} Answer is <span style="background-color:lightblue">${quizItem.o[i]}</span></h6>
+                          </div>
+                            </div>`
     
-  }
-});
+  });
+};
+})
 
   // Reset to start Quiz Again
 const btnReset = document.querySelector('#btnReset')
